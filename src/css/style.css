@@ -1,0 +1,27 @@
+*,::after,::before {
+    box-sizing: border-box
+}
+
+img {
+    width: 100%;
+    display: block;
+}
+.gallery {
+    display: flex;
+    flex-wrap: wrap; 
+}
+.info {
+    display: flex;  
+}
+
+.link {
+    display: block;
+    margin-left: 10px;
+    flex-basis: calc((100%-20px)/3);
+    justify-content: baseline;
+    
+}
+.photo-card {
+display: flex;
+flex-direction: column;
+}
