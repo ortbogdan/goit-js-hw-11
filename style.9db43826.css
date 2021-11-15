@@ -1,0 +1,2 @@
+*,:after,:before{box-sizing:border-box}.search-form{height:50px;display:flex;justify-content:center;align-items:center;background-color:#407254}input[name=searchQuery]{height:30px;margin-right:10px;border-radius:2px;background-color:#fff;border-color:transparent}img{width:100%;display:block}.gallery{flex-wrap:wrap}.gallery,.info{display:flex}.link{display:block;margin-left:10px;flex-basis:calc(33.33333% - 6.66667px);justify-content:baseline}.photo-card{display:flex;flex-direction:column}
+/*# sourceMappingURL=/goit-js-hw-11/style.9db43826.css.map */
