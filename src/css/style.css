@@ -24,16 +24,34 @@ img {
 .gallery {
   display: flex;
   flex-wrap: wrap;
+
+  color: rgb(0, 0, 0);
 }
 .info {
   display: flex;
+  justify-content: center;
 }
-
+.info-item {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+}
+.info-value {
+  display: block;
+}
+.info-item:not(:first-child) {
+  margin-left: 10px;
+}
 .link {
+  width: 300px;
+  height: 300px;
+
+  text-decoration: none;
   display: block;
   margin-left: 10px;
-  flex-basis: calc((100%-20px) / 3);
-  justify-content: baseline;
+
+  color: inherit;
 }
 .photo-card {
   display: flex;

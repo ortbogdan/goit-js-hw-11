@@ -39,16 +39,16 @@ function makeCardMarkup (images) {
   <img src="${webformatURL}" alt="${tags}" loading="lazy" />
   <div class="info">
     <p class="info-item">
-      <b>${likes}</b>
+      <b>Likes</b><span class="info-value">${likes}</span>
     </p>
     <p class="info-item">
-      <b>${views}</b>
+      <b>Views</b><span class="info-value">${views}</span>
     </p>
     <p class="info-item">
-      <b>${comments}</b>
+      <b>Comments</b><span class="info-value">${comments}</span>
     </p>
     <p class="info-item">
-      <b>${downloads}</b>
+      <b>Downloads</b><span class="info-value">${downloads}</span>
     </p>
   </div>
   </div></a>`).join('');
