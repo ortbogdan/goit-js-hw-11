@@ -8,20 +8,32 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const formRef = document.querySelector('#search-form');
 const inputRef = document.querySelector('[name="searchQuery"]');
 const galleryRef = document.querySelector('.gallery');
-
+const loadMoreBtn = document.querySelector('.load-more');
+let value = '';
 formRef.addEventListener('submit', searchImages)
+loadMoreBtn.addEventListener('click', addMoreImages);
 
-function searchImages (e) {
-   e.preventDefault()
-   const value = inputRef.value;
+function addMoreImages() {
+  const getMoreImages = fetchGallery(value);
+  const addMoreImages = makeCardMarkup(getMoreImages)
+  galleryRef.insertAdjacentHTML('beforeend', addMoreImages)
+  new SimpleLightbox('.gallery a');
+
+}
+
+function searchImages (event) {
+  event.preventDefault()
+  value = inputRef.value.trim();
+  if (value === '') {
+    return
+  }
    console.log(value)
-   const getImages =fetchGallery(value);
+   const getImages = fetchGallery(value);
 
    getImages.then((data)=>{
        if (data.hits.length === 0) {
            return Notify.info('Sorry, there are no images matching your search query. Please try again.');
        }
-
        console.log(data.hits)
 
     const imagesCards = makeCardMarkup(data.hits);
@@ -52,5 +64,4 @@ function makeCardMarkup (images) {
     </p>
   </div>
   </div></a>`).join('');
-
 }
