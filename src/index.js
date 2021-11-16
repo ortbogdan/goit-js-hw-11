@@ -18,18 +18,10 @@ async function addMoreImages() {
   console.log('dasdasd')
   const getMoreImages = fetchGallery(value);
   getMoreImages.then((data)=>{
-       if (data.hits.length === 0) {
-           return Notify.info('Sorry, there are no images matching your search query. Please try again.');
-       }
-       console.log(data.hits)
-
     const imagesCards = makeCardMarkup(data.hits);
     galleryRef.insertAdjacentHTML('beforeend', imagesCards)
-    
   })
-  
 }
-
 function searchImages (event) {
   event.preventDefault()
   value = inputRef.value.trim();
