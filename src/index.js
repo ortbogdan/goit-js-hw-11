@@ -9,16 +9,25 @@ const formRef = document.querySelector('#search-form');
 const inputRef = document.querySelector('[name="searchQuery"]');
 const galleryRef = document.querySelector('.gallery');
 const loadMoreBtn = document.querySelector('.load-more');
+
 let value = '';
 formRef.addEventListener('submit', searchImages)
 loadMoreBtn.addEventListener('click', addMoreImages);
 
-function addMoreImages() {
+async function addMoreImages() {
+  console.log('dasdasd')
   const getMoreImages = fetchGallery(value);
-  const addMoreImages = makeCardMarkup(getMoreImages)
-  galleryRef.insertAdjacentHTML('beforeend', addMoreImages)
-  new SimpleLightbox('.gallery a');
+  getMoreImages.then((data)=>{
+       if (data.hits.length === 0) {
+           return Notify.info('Sorry, there are no images matching your search query. Please try again.');
+       }
+       console.log(data.hits)
 
+    const imagesCards = makeCardMarkup(data.hits);
+    galleryRef.insertAdjacentHTML('beforeend', imagesCards)
+    
+  })
+  
 }
 
 function searchImages (event) {

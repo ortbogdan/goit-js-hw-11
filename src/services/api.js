@@ -4,7 +4,7 @@ import axios from "axios";
 axios.defaults.baseURL = 'https://pixabay.com/api';
 
 const API_KEY = '24332331-fceed411956b076254def86c5'
-let perPage = 40;
+let perPage = 3;
 let page = 1;
 
 function fetchGallery(name) {
