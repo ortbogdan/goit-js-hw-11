@@ -10,6 +10,7 @@ import 'simplelightbox/dist/simple-lightbox.min.css';
 const formRef = document.querySelector('#search-form');
 const galleryRef = document.querySelector('.gallery');
 const loadMoreBtnRef = document.querySelector('.load-more');
+const notificationRef = document.querySelector('.notification');
 
 const imageApi = new ImagesApi();
 const simpleLightbox = new SimpleLightbox('.gallery a');
@@ -18,6 +19,7 @@ formRef.addEventListener('submit', searchImages);
 
 function searchImages(event) {
   event.preventDefault();
+  notificationRef.classList.toggle('visually-hidden');
   clearImagesGallery()
   imageApi.search = event.currentTarget.elements.searchQuery.value.trim();
   if (imageApi.search === '') {
@@ -34,7 +36,10 @@ function searchImages(event) {
      if (data.totalHits > imageApi.perPage) {
        loadMoreBtnRef.classList.remove('visually-hidden');
        loadMoreBtnRef.addEventListener('click', throttle(loadMoreImages, 300));
-     }
+    }
+    if (data.totalHits < imageApi.perPage) {
+      showNotification()
+    }
     Notify.info(`Hooray! We found ${data.totalHits} images.`)
    })
 }
@@ -45,9 +50,10 @@ function loadMoreImages() {
     addCardMarkup(imagesCards);
     addGalleryScroll();
     if (data.totalHits === galleryRef.children.length) {
-      loadMoreBtnRef.classList.add('visually-hidden')
+      showNotification()
       loadMoreBtnRef.removeEventListener('click', loadMoreImages);
-      Notify.info('Oops...it seems that we are out of pictures!'); 
+     
+      // Notify.info('Oops...it seems that we are out of pictures!'); 
      }
   })
 }
@@ -67,4 +73,8 @@ function addGalleryScroll() {
      top: cardHeight * 2,
      behavior: 'smooth',
     });
+}
+function showNotification() {
+      loadMoreBtnRef.classList.add('visually-hidden')
+      notificationRef.classList.remove('visually-hidden')
 }

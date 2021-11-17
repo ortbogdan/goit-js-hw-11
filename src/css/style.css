@@ -3,6 +3,9 @@
 ::before {
   box-sizing: border-box;
 }
+body {
+  text-align: center;
+}
 .search-form {
   height: 50px;
   display: flex;
