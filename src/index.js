@@ -19,7 +19,8 @@ formRef.addEventListener('submit', searchImages);
 
 function searchImages(event) {
   event.preventDefault();
-  notificationRef.classList.toggle('visually-hidden');
+  if (!notificationRef.classList.contains('visually-hidden'))
+  { notificationRef.classList.add('visually-hidden'); }
   clearImagesGallery()
   imageApi.search = event.currentTarget.elements.searchQuery.value.trim();
   if (imageApi.search === '') {
