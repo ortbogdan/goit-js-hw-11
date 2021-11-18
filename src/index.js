@@ -1,12 +1,11 @@
+// ================================IMPORTS=================================================
 import { ImagesApi } from "./services/api";
 import { makeCardMarkup } from "./services/makeCardMarkup";
 import { Notify } from 'notiflix';
 import { throttle } from "lodash";
-
 import SimpleLightbox from 'simplelightbox';
-// Дополнительный импорт стилей
 import 'simplelightbox/dist/simple-lightbox.min.css';
-
+// ================================VARIABLES================================================
 const formRef = document.querySelector('#search-form');
 const galleryRef = document.querySelector('.gallery');
 const loadMoreBtnRef = document.querySelector('.load-more');
@@ -14,15 +13,19 @@ const notificationRef = document.querySelector('.notification');
 
 const imageApi = new ImagesApi();
 const simpleLightbox = new SimpleLightbox('.gallery a');
-
-formRef.addEventListener('submit', searchImages);
+// =========================================================================================
+formRef.addEventListener('submit', throttle(searchImages, 300));
 
 function searchImages(event) {
   event.preventDefault();
+
   if (!notificationRef.classList.contains('visually-hidden'))
   { notificationRef.classList.add('visually-hidden'); }
+
   clearImagesGallery()
+
   imageApi.search = event.currentTarget.elements.searchQuery.value.trim();
+
   if (imageApi.search === '') {
     return;
   }
@@ -53,7 +56,6 @@ function loadMoreImages() {
     if (data.totalHits === galleryRef.children.length) {
       showNotification()
       loadMoreBtnRef.removeEventListener('click', loadMoreImages);
-     
       // Notify.info('Oops...it seems that we are out of pictures!'); 
      }
   })
