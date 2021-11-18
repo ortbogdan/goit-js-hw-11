@@ -2,9 +2,6 @@ import axios from "axios";
 
 const API_KEY = '24332331-fceed411956b076254def86c5';
 
-
-// {webformatURL, largeImageURL, tags, likes, views, comments, downloads}
-// ====================================================================================
 export class ImagesApi {
     constructor() {
         this.searchImages = '';
