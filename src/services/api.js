@@ -9,10 +9,16 @@ export class ImagesApi {
         this.perPage = 40;
     }
     async fetchImages() {
-        axios.defaults.baseURL = 'https://pixabay.com/api';
-        const fetchRequest = await axios.get(`/?key=${API_KEY}&q=${this.searchImages}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=${this.perPage}`)
-            .then(response => response.data).then(data => { this.incrementPage(); return data }).catch(console.log);
-        return fetchRequest;
+        try {
+            axios.defaults.baseURL = 'https://pixabay.com/api';
+            const response = await axios.get(`/?key=${API_KEY}&q=${this.searchImages}&image_type=photo&orientation=horizontal&safesearch=true&page=${this.page}&per_page=${this.perPage}`)
+            const data  = await response.data
+            this.incrementPage();
+            return data;
+        }
+        catch (e) {
+            console.log(e);
+        }
     }
     incrementPage() {
         this.page += 1;
