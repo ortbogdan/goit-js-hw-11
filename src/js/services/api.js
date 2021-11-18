@@ -16,8 +16,8 @@ export class ImagesApi {
             this.incrementPage();
             return data;
         }
-        catch (e) {
-            console.log(e);
+        catch (error) {
+            console.log(error);
         }
     }
     incrementPage() {

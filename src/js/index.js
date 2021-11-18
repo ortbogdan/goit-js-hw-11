@@ -56,7 +56,6 @@ function loadMoreImages() {
     if (data.totalHits === galleryRef.children.length) {
       showNotification()
       loadMoreBtnRef.removeEventListener('click', loadMoreImages);
-      // Notify.info('Oops...it seems that we are out of pictures!'); 
      }
   })
 }
