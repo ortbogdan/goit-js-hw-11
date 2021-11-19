@@ -22,10 +22,7 @@
   border-color: transparent;
 }
 .search-btn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 30px;
+  width: 55px;
   height: 30px;
   padding: 0;
   border-bottom-right-radius: 2px;
@@ -34,11 +31,7 @@
 
   cursor: pointer;
 }
-.search-icon {
-  display: block;
-  width: 20px;
-  height: 20px;
-}
+
 .gallery {
   display: flex;
   flex-wrap: wrap;

@@ -54,28 +54,13 @@ body {
 }
 
 .search-btn {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  width: 30px;
+  width: 55px;
   height: 30px;
   padding: 0;
   border-bottom-right-radius: 2px;
   border-top-right-radius: 2px;
   border: none;
   cursor: pointer;
-}
-
-.search-icon {
-  display: block;
-  width: 20px;
-  height: 20px;
 }
 
 .gallery {
